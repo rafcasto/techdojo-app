@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taxapp-dep
+  labels:
+    app: taxapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taxapp-app
+  template:
+    metadata:
+      labels:
+        app: taxapp-app
+    spec:
+      containers:
+        - name: taxapp
+          image: REPO_IMAGE
+          ports:
+            - name: taxapp
+              containerPort: 3000
